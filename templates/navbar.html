@@ -1,0 +1,53 @@
+<nav class="container fixed-top navbar navbar-expand-lg ">
+  
+    <div class="container-fluid">
+  
+      <a class="navbar-brand" href="{% url 'home' %}">HOME</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+              LogOut <i class="fas fa-sign-out-alt"></i>
+            </a>
+            </li>
+            <li class="nav-item dropdown">
+              
+            </a>
+                <a class="nav-link dropdown-toggle" href="" role="button" 
+                data-bs-toggle="dropdown" aria-expanded="false">
+                {{ user.username|title }} <i class="fas fa-user"></i>
+                </a>
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'profile' user.username %}">Profilo</a></li>
+                <li><a class="dropdown-item" href="#">Modifica Profilo</a></li>
+                </ul>
+            </li>
+            <div class="justify-content-end"> non funzia
+            <form class="d-flex " role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+
+
+        {% else %}
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'login' %}">
+              LogIn <i class="fas fa-sign-in-alt"></i>
+            </a>
+            </li>
+             <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">
+              Registrati <i class="fas fa-user-plus"></i>
+            </a>
+            </li>
+        {% endif %}
+        </ul>
+        
+      </div>
+    </div>
+  </nav>

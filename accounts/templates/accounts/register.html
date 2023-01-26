@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Registrati Oggi</legend>
+                {{ form|crispy }}
+            </fieldset>
+
+            Registrandoti, accetti i Termini di servizio e l'Informativa sulla privacy
+
+            <div class="form-group pt-3">
+                <button class="btn btn-outline-info" type="submit">Registrati</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Hai già Account registrato? <a class="ml-2" href="/login">Log In</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}
